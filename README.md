@@ -1,15 +1,15 @@
-# Tools Dev Project MASTER
+# Tools Dev Project 2022-01-28
 ## Project Overview
 
 Fork the provided default Rails app, use a postgres db to display Highstock charts of the local Austin temperatures. Properly allocate the assets and route the internal API requests through the rails stack and display live data on the frontend using AJAX. API endpoints will be provided by us. Push the changes to a feature branch, create a pull request and deploy to Heroku.
 
 We want to see you working with Rails models and the database, so be sure that you’re not writing this entirely in Javascript.
 
-The due date for this project is 9:59AM CST MASTER. Your pull request should not have any commits made after this time. The pull request should be submitted by 12:00PM CST MASTER.
+The due date for this project is 9:59AM CST 2022-02-07. Your pull request should not have any commits made after this time. The pull request should be submitted by 12:00PM CST 2022-02-07.
 
 ## INSTRUCTIONS
 
-1. Fork the primary repo at [https://github.com/bc-RoryRegnell/toolsdev-project-MASTER](https://github.com/bc-RoryRegnell/toolsdev-project-MASTER) and create a new feature-branch to work on
+1. Fork the primary repo at [https://github.com/bc-RoryRegnell/toolsdev-project-2022-01-28](https://github.com/bc-RoryRegnell/toolsdev-project-2022-01-28) and create a new feature-branch to work on
 2. Use Bootstrap ([http://getbootstrap.com](http://getbootstrap.com)) for styling
 3. Use Highstock gem ([https://github.com/bc-RoryRegnell/highstock-rails](https://github.com/bc-RoryRegnell/highstock-rails)) for charting
 4. Set favicon and logo. Link logo to [http://www.bigcommerce.com](http://www.bigcommerce.com)
