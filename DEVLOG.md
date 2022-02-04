@@ -1,20 +1,39 @@
 # Dev Log
 
-## Environment Config
+## Jan 28 - Feb 1
+
+### Environment Config
 
 * Installed Linux
+* Installed IDE
 
-### Feb 2 2022
+## Feb 2 2022
 
-* Installed dependencies
+* Installed global dependencies
+    + ruby
+    + git
+    + rvm
+    + postgresql
+    + nodejs
 
-## Project config
+## Feb 3 2022
 
-### Feb 3 2022
+### Project config
 
 * Forked project
-* Added db password ENV variable
-* Include Boostrap CSS/JS
-* Added main#index 
-* Generated WWO API Key and concealed with rails credentials:edit
-* Exposed the API Key to main#index
+* db password ENV variable
+* Install/configure local dependencies
+    + Boostrap CSS/JS
+    + main#index
+    + Generated WWO API Key and concealed with rails credentials:edit
+    + Exposed the API Key to main#index
+    + clockwork gem
+    + highstock-rails gem --*NOTE*: Removed highstock/highcharts-more from JS manifest
+    + rest-client gem
+    + Found WWO API does not include hourly high/lows as part of any of their responses.
+
+### Development
+
+* BigCommerce favicon
+* BigCommerce logo + href
+* Added config/initializers/constants.rb for API URL
