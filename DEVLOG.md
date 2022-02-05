@@ -37,3 +37,10 @@
 * BigCommerce favicon
 * BigCommerce logo + href
 * Added config/initializers/constants.rb for API URL
+
+TODO: Decide between Gon + rabl, javascript_tag, data tags;
+
+## Feb 4 2022
+
+* Tested out using javascript_tag + coffeescript to render Highstocks chart
+* Decided on gon to allow for more Ruby processing

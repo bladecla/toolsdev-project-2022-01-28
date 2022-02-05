@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_time: MyString
+  temp: 1
+  heatIndex: 1
+  feelsLike: 1
+  windChill: 1
+  humidity: 1
+
+two:
+  date_time: MyString
+  temp: 1
+  heatIndex: 1
+  feelsLike: 1
+  windChill: 1
+  humidity: 1

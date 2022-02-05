@@ -14,6 +14,8 @@ gem 'clockwork'
 gem 'highstock-rails'
 # For HTTP requests
 gem 'rest-client'
+# Gon for passing data between JS and Rails
+gem 'gon'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
