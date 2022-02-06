@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2022_02_04_234125) do
 
   create_table "weather_records", force: :cascade do |t|
     t.string "date_time"
+    t.float "timestamp"
     t.integer "temp"
     t.integer "heatIndex"
     t.integer "feelsLike"

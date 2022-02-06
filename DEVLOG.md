@@ -43,4 +43,24 @@ TODO: Decide between Gon + rabl, javascript_tag, data tags;
 ## Feb 4 2022
 
 * Tested out using javascript_tag + coffeescript to render Highstocks chart
-* Decided on gon to allow for more Ruby processing
+* Decided on gon to keep business logic out of the view
+* Generated WeatherRecord model
+* Decided on open-uri gem vs. rest-client for HTTP
+* Used WWO Local History API + open_uri + db:seed to backfill 30 days of data
+* date_time column is in UTC parseable format YYYY-MM-DD-H(H) for JavaScript
+* exposed db WeatherRecords to CoffeScript via Gon to render in Highstocks chart
+
+TODO: 
+    * Move from passing [x,y] tuples in Highcharts to pre-processed flat arrays from Gon.
+    * Set pointStart to WeatherRecords.first date time
+
+## Feb 5 2022
+
+* re-seeded db to use JS compatible Unix timestamps
+* pluck db values for each column on WR model and pass as an array to Gon
+* Set pointStart with WR.first.date_time
+* Swapped out 3hr High/Low with Heat Index/ Feels Like since this data is only available at the daily level
+* re-seeded to add move date_time to strings for easy debugging, unix is now the timestamp field
+* filtered records to get true 3-hour intervals
+* setup dev_clockwork.db with a basic UpdateIntervalJob < ActiveJob to query for new data
+* 
