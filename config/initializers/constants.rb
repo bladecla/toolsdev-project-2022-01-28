@@ -13,9 +13,20 @@ def dateStringToTimestamp(dateString, hourString)
     (Time.new(*timeArgs).to_f - 6 * 3600) * 1000 
 end
 
+# Adjust -6 for timezone to make Highcharts happy
+
+def get_current_hour_timestamp
+    t = Time.now - 6 * 3600
+    yyyy = t.year
+    mm = t.month
+    dd = t.day
+    hh = t.hour
+    Time.new(yyyy, mm, dd, hh, 0, 0, "-06:00").to_f * 1000
+end
+
 def upsert_wwo_json_to_db_model(url)
 
-    puts "Adding intervals:"
+    puts "Attempting to add intervals:"
     json = JSON.parse(URI.open(url).read)
     json = json["data"]["weather"]
     json.each do |day|
@@ -26,15 +37,15 @@ def upsert_wwo_json_to_db_model(url)
             date_time = "#{dateString}-#{hour_string}"
             
             puts date_time
-            # WeatherRecord.upsert({
-            # date_time: date_time,
-            # timestamp: dateStringToTimestamp(dateString, hour_string),
-            # temp: hour["tempF"].to_i,
-            # heatIndex: hour["HeatIndexF"].to_i,
-            # feelsLike: hour["FeelsLikeF"].to_i,
-            # windChill: hour["WindChillF"].to_i,
-            # humidity: hour["humidity"].to_i
-            # }, unique_by: :date_time, :timestamp)
+            WeatherRecord.find_or_create_by({
+            date_time: date_time,
+            timestamp: dateStringToTimestamp(dateString, hour_string),
+            temp: hour["tempF"].to_i,
+            heatIndex: hour["HeatIndexF"].to_i,
+            feelsLike: hour["FeelsLikeF"].to_i,
+            windChill: hour["WindChillF"].to_i,
+            humidity: hour["humidity"].to_i
+            })
             end
         end
 end

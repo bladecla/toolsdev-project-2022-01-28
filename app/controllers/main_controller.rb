@@ -1,18 +1,36 @@
+# Controller for the root page. Passes database records to Highcharts via the Gon gem. 
+
 class MainController < ApplicationController
     def index
 
-        first_record = WeatherRecord.first
-        three_hour = WeatherRecord.where("id % 3 = 1")
+        # JS compatible Unix timestamps
 
-        # 2022-01-01, 0 --> JS compatible Unix timestamp
+        current_interval_timestamp = get_current_hour_timestamp
+
+        # Initialize gon
+
+        gon.forecast_start = current_interval_timestamp + 3600 * 1000 # start forecast series starting with the next hour
         gon.start_date = WeatherRecord.first.timestamp
-        
+        gon.temp = []
+        gon.tempForecast = []
+        gon.heatIndex = []
+        gon.feelsLike = []
+        gon.windChill = []
+        gon.humidity = []
 
-        gon.timestamp = WeatherRecord.select("timestamp").pluck :timestamp
-        gon.temp = WeatherRecord.select("temp").pluck :temp
-        gon.heatIndex = three_hour.pluck :heatIndex
-        gon.feelsLike = three_hour.pluck :feelsLike
-        gon.windChill = WeatherRecord.select("windChill").pluck :windChill
-        gon.humidity = WeatherRecord.select("humidity").pluck :humidity
+        # Iterate through records once, filling x-Axis series data in gon. 
+
+        WeatherRecord.all.each do | record |
+            if record.timestamp > current_interval_timestamp
+                gon.tempForecast.push(record.temp)
+            else
+                gon.temp.push(record.temp)
+            end
+
+            gon.heatIndex.push(record.heatIndex) if record.id % 3 == 1
+            gon.feelsLike.push(record.feelsLike) if record.id % 3 == 1
+            gon.windChill.push(record.windChill)
+            gon.humidity.push(record.humidity)
+        end
     end
 end

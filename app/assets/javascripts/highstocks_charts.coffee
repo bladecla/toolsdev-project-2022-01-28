@@ -1,13 +1,14 @@
 $ ->
-    { start_date, temp, feelsLike, humidity, heatIndex } = gon
-
-    Highcharts.setOptions(
-        time: 
-            timezone: "America/Chicago"
-    )
+    { start_date, forecast_start, temp, tempForecast, feelsLike, humidity, heatIndex } = gon
 
     Highcharts.stockChart("weather",
-        title: text: "Weather for Austin HQ"
+        title: 
+            text: "Weather for Austin HQ"
+        legend:
+            enabled: true
+        credits:
+            text: "Blake Clark"
+            href: "https://www.bigcommerce.com"
         xAxis: 
             title: 
                 text: "Time (Hours)"
@@ -20,14 +21,23 @@ $ ->
                 pointStart: start_date
                 pointInterval: 3600 * 1000
         series: [
-                name: "Temperature (F)"
+                name: "Historical Temperature (F)"
                 data: temp
+            ,
+                name: "Forecast Temperature (F)"
+                data: tempForecast
+                pointStart: forecast_start
         ]
     )
 
     Highcharts.stockChart("high-low",
         title:
             text: "3-Hour Heat Index / Feels Like"
+        legend:
+            enabled: true
+        credits:
+            text: "Blake Clark"
+            href: "https://www.bigcommerce.com"
         plotOptions:
             series:
                 pointStart: start_date

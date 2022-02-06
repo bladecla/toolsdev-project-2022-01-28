@@ -4,7 +4,8 @@
 
 ### Environment Config
 
-* Installed Linux
+* Tried configuring on Windows with WSL + Debian
+* Installed Ubuntu alongside windows
 * Installed IDE
 
 ## Feb 2 2022
@@ -63,4 +64,8 @@ TODO:
 * re-seeded to add move date_time to strings for easy debugging, unix is now the timestamp field
 * filtered records to get true 3-hour intervals
 * setup dev_clockwork.db with a basic UpdateIntervalJob < ActiveJob to query for new data
-* 
+* Added much-needed validations to the WR model
+* Abstracted URL building, timestamp conversion and record upsert methods into constants.rb
+* Refactored main#index to only iterate over the data once. Sorts temperatures into historical/forecast
+* Added the forecast series to the 1-hr historical chart
+* Fixed an arg out of range bug in current timestamp helper
