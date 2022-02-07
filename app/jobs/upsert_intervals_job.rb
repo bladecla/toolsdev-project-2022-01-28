@@ -36,9 +36,9 @@ class UpsertIntervalsJob < ApplicationJob
 
     # Generate WWO API URL, get data and populate database
 
-    # puts "Getting today's weather, plus 2 days forecast"
-    # url = wwo_api_forecast_url(3) 
-    # upsert_wwo_json_to_db_model(url)
+    puts "Getting today's weather, plus 2 days forecast"
+    url = wwo_api_forecast_url(3) 
+    upsert_wwo_json_to_db_model(url)
 
     # Re-pluck the new series data and broadcast it via ActionCable
 
