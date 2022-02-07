@@ -6,6 +6,5 @@ class HerokuClockworkTestJob < ApplicationJob
     rand(0..16).times { message << "!" }
     puts message
 
-    UpdateController.render :partial => "update"
   end
 end
