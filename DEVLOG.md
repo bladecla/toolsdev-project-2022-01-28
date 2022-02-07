@@ -69,3 +69,8 @@ TODO:
 * Refactored main#index to only iterate over the data once. Sorts temperatures into historical/forecast
 * Added the forecast series to the 1-hr historical chart
 * Fixed an arg out of range bug in current timestamp helper
+* Added logic to not update intervals past 48 hours forecast
+
+## Feb 6 2022
+
+* Renamed constants.rb to global_helpers.rb

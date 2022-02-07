@@ -140,6 +140,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (3.3.5)
     request_store (1.5.1)
       rack (>= 1.4)
     rest-client (2.1.0)
@@ -206,6 +207,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (= 5.2.2)
   rails (= 5.2.5)
+  redis (~> 3.0)
   rest-client
   sass-rails (~> 5.0)
   spring

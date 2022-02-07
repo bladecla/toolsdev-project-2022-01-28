@@ -11,4 +11,6 @@ module Clockwork
 
   every(30.minutes, UpsertIntervalsJob.new)
 
+  every(15.seconds, HerokuClockworkTestJob.new)
+
 end

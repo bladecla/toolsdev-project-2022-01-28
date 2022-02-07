@@ -1,6 +1,7 @@
 # Controller for the root page. Passes database records to Highcharts via the Gon gem. 
 
 class MainController < ApplicationController
+    include ActionController::Live
     def index
 
         # JS compatible Unix timestamps
@@ -32,5 +33,17 @@ class MainController < ApplicationController
             gon.windChill.push(record.windChill)
             gon.humidity.push(record.humidity)
         end
+    end
+
+    # Open an EventSource stream, passing the chart series data arrays. Implicitly close the message with double new-line
+
+    # def events
+    #     response.headers['Content-Type'] = 'text/event-stream'
+    #     response.stream.write "data: hello\n\n"
+    #     ensure
+    #         response.stream.close
+    # end
+
+    def update
     end
 end

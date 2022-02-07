@@ -24,7 +24,7 @@ def get_current_hour_timestamp
     Time.new(yyyy, mm, dd, hh, 0, 0, "-06:00").to_f * 1000
 end
 
-def upsert_wwo_json_to_db_model(url)
+def upsert_wwo_json_to_db_model(url, seeding=false)
 
     puts "Attempting to add intervals:"
     json = JSON.parse(URI.open(url).read)
@@ -35,17 +35,23 @@ def upsert_wwo_json_to_db_model(url)
         hourly.each do |hour|
             hour_string = hour["time"].to_i / 100
             date_time = "#{dateString}-#{hour_string}"
+            timestamp = dateStringToTimestamp(dateString, hour_string)
             
-            puts date_time
-            WeatherRecord.find_or_create_by({
-            date_time: date_time,
-            timestamp: dateStringToTimestamp(dateString, hour_string),
-            temp: hour["tempF"].to_i,
-            heatIndex: hour["HeatIndexF"].to_i,
-            feelsLike: hour["FeelsLikeF"].to_i,
-            windChill: hour["WindChillF"].to_i,
-            humidity: hour["humidity"].to_i
-            })
+            # Don't add records 48 hrs + in the future
+            if seeding || (timestamp - get_current_hour_timestamp <= 48 * 3600 * 1000)
+                puts date_time
+                WeatherRecord.find_or_create_by({
+                date_time: date_time,
+                timestamp: timestamp,
+                temp: hour["tempF"].to_i,
+                heatIndex: hour["HeatIndexF"].to_i,
+                feelsLike: hour["FeelsLikeF"].to_i,
+                windChill: hour["WindChillF"].to_i,
+                humidity: hour["humidity"].to_i
+                })
+            else
+                puts "Not adding interval #{date_time} as it is more than 48 hours in the future"
             end
         end
+    end
 end

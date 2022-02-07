@@ -10,4 +10,4 @@ end
 # backfill 30 days of data
 url = wwo_api_history_url("2022-01-01", "2022-01-31")
 
-upsert_wwo_json_to_db_model(url)
+upsert_wwo_json_to_db_model(url, true)

@@ -1,7 +1,11 @@
 $ ->
     { start_date, forecast_start, temp, tempForecast, feelsLike, humidity, heatIndex } = gon
 
-    Highcharts.stockChart("weather",
+    # ess = new EventSource("/events")
+    # ess.addEventListener "message", (e)->
+    #     alert(e.data)
+
+    window.tempChart = Highcharts.stockChart("weather",
         title: 
             text: "Weather for Austin HQ"
         legend:
@@ -57,6 +61,5 @@ $ ->
             ,
                 name: "Feels like",
                 data: feelsLike
-
         ]
     )
