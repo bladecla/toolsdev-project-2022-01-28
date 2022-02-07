@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: hiringProject_production
-  username: hiringProject
+  username: bladecla
   password: <%= ENV['HIRINGPROJECT_DATABASE_PASSWORD'] %>

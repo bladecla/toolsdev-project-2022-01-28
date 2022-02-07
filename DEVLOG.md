@@ -74,3 +74,8 @@ TODO:
 ## Feb 6 2022
 
 * Renamed constants.rb to global_helpers.rb
+* Attempted to set up live reload with 
+    + EventSource
+    + Redis SubPub
+    + Did not get to try ActionCable
+* Deployed to Heroku
