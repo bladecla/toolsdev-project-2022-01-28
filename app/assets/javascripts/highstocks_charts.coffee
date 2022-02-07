@@ -1,11 +1,15 @@
 $ ->
-    { start_date, forecast_start, temp, tempForecast, feelsLike, humidity, heatIndex } = gon
+    { start_date, forecast_start } = gon
+    { temp, tempForecast, feelsLike, humidity, heatIndex } = gon.series
 
-    # ess = new EventSource("/events")
-    # ess.addEventListener "message", (e)->
-    #     alert(e.data)
+    gon.refreshChart = (series) ->
+        console.log("refreshing chart" + series.message.temp, series)
+        tempChart.series[0].setData(series.message.temp) 
+        tempChart.series[1].setData(series.message.tempForecast)
+        highLowChart.series[0].setData(series.message.heatIndex) 
+        highLowChart.series[1].setData(series.message.feelsLike)
 
-    window.tempChart = Highcharts.stockChart("weather",
+    Highcharts.stockChart("weather",
         title: 
             text: "Weather for Austin HQ"
         legend:
@@ -63,3 +67,6 @@ $ ->
                 data: feelsLike
         ]
     )
+
+    tempChart = $("#weather").highcharts()
+    highLowChart = $("#high-low").highcharts()
