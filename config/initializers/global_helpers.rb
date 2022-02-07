@@ -40,7 +40,7 @@ def upsert_wwo_json_to_db_model(url, seeding=false)
             # Don't add records 48 hrs + in the future
             if seeding || (timestamp - get_current_hour_timestamp <= 48 * 3600 * 1000)
                 puts date_time
-                WeatherRecord.find_or_create_by({
+                WeatherRecord.find_or_create_by!({
                 date_time: date_time,
                 timestamp: timestamp,
                 temp: hour["tempF"].to_i,

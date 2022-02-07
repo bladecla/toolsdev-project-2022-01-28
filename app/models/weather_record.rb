@@ -5,5 +5,5 @@ class WeatherRecord < ApplicationRecord
     validates :heatIndex, presence: true
     validates :feelsLike, presence: true
     validates :date_time, presence: true, uniqueness: true
-    validates :timestamp, presence: true, uniqueness: true
+    validates :timestamp, presence: true
 end

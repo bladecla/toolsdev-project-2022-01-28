@@ -11,7 +11,7 @@ class MainController < ApplicationController
         # Initialize gon
 
         gon.forecast_start = current_interval_timestamp + 3600 * 1000 # start forecast series starting with the next hour
-        gon.start_date = WeatherRecord.first.timestamp
+        gon.start_date = WeatherRecord.first.timestamp || Time.new(2022, 1, 1)
         gon.temp = []
         gon.tempForecast = []
         gon.heatIndex = []
